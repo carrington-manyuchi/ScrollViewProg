@@ -55,8 +55,8 @@ class ViewController: UIViewController {
     private func configureScrollViewConstraints() {
         
         let composeScrollView = [
-            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ]
@@ -68,10 +68,11 @@ class ViewController: UIViewController {
             contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-            contentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor)
+            //contentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor)
         ]
         
         let hConst = contentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor)
+        hConst.isActive = true
         hConst.priority = UILayoutPriority(50)
         
         
@@ -97,8 +98,7 @@ class ViewController: UIViewController {
         view.addSubview(imageViews[4])
         imageViews[4].translatesAutoresizingMaskIntoConstraints = false
         
-        view.addSubview(imageViews[5])
-        imageViews[5].translatesAutoresizingMaskIntoConstraints = false
+       
         
         configureImagesConstraints()
     }
@@ -143,23 +143,15 @@ class ViewController: UIViewController {
             imageViews[4].trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             imageViews[4].heightAnchor.constraint(equalToConstant: 300),
             imageViews[4].widthAnchor.constraint(equalTo: contentView.widthAnchor),
+            imageViews[4].bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ]
         
-        let composeImagesViewsFive = [
-            imageViews[5].topAnchor.constraint(equalTo: imageViews[3].bottomAnchor),
-            imageViews[5].leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            imageViews[5].trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            imageViews[5].heightAnchor.constraint(equalToConstant: 300),
-            imageViews[5].widthAnchor.constraint(equalTo: contentView.widthAnchor),
-            imageViews[5].bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
-        ]
-
+        
         NSLayoutConstraint.activate(composeImagesViewsZero)
         NSLayoutConstraint.activate(composeImagesViewsOne)
         NSLayoutConstraint.activate(composeImagesViewsTwo)
         NSLayoutConstraint.activate(composeImagesViewsThree)
         NSLayoutConstraint.activate(composeImagesViewsFour)
-        NSLayoutConstraint.activate(composeImagesViewsFive)
         
     }
 
